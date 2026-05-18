@@ -3,7 +3,7 @@
 ## Task 1: Analyzing the performance of GPU kernels in GEM5 (4 points)
 
 
-In this task, you will evaluate the performance characteristics of a histogram computation kernel using the GEM5 GPU simulator. The histogram kernel is a algorithm that processes an input image and computes the frequency distribution of pixel values. The input image `lena.jpg` is provided in the `histogram/` directory. The histogram is computed over 256 bins, corresponding to the pixel values ranging from 0 to 255. 
+In this task, you will evaluate the performance characteristics of a histogram computation kernel using the GEM5 GPU simulator. The histogram kernel is an algorithm that processes an input image and computes the frequency distribution of pixel values. The input image `lena.jpg` is provided in the `histogram/` directory. The histogram is computed over 256 bins, corresponding to the pixel values ranging from 0 to 255. 
 
 You are tasked with analyzing and comparing the performance of two kernel implementations:
 
@@ -18,7 +18,7 @@ To build and simulate the kernels, use the provided Makefile in conjunction with
 ### Experiment Setup:
 
 1. Set the number of compute units to 2, 4, and 8.
-2. Run the both of the histogram kernels for each configuration.
+2. Run both of the histogram kernels for each configuration.
 3. To observe the impact of false sharing, observe following metrics:
    - Mean load latency (`loadLatencyDist::mean`)
    - Avergage number of executed vector ALU instructions (`vALUInsts`)
@@ -52,7 +52,7 @@ To build and simulate the kernels, use the provided Makefile in conjunction with
    - Average number of cycles (`totalCycles`)
    - Average number of vector per cycle (`vpc`)
 
-> Note: When analyzing the results in the `stats.txt` file, you will notice that each performance metric appears **three times**. The **first occurrence** of each metric corresponds to the period **during GPU  execution of first kernel**, while the **second occurrence** corresponds to the period **during GPU execution of second kernel**. The **third occurrence** is collected **after both GPU kernels have completed**. For the task at hand, you should **focus on the first two sets of statistics**, as they reflect the actual behavior and performance characteristics of the GPU kernels while they are executing.
+> Note: When analyzing the results in the `stats.txt` file, you will notice that each performance metric appears **three times**. The **first occurrence** of each metric corresponds to the period **during GPU execution of first kernel**, while the **second occurrence** corresponds to the period **during GPU execution of second kernel**. The **third occurrence** is collected **after both GPU kernels have completed**. For the task at hand, you should **focus on the first two sets of statistics**, as they reflect the actual behavior and performance characteristics of the GPU kernels while they are executing.
 
 
 ## Task 3: Analyzing the impact of thread divergence on performance of SpMV kernel(3 points)
@@ -89,7 +89,7 @@ To build and simulate the kernels, use the provided Makefile in conjunction with
 2. Run the both of the histogram kernels for each configuration.
 3. To compare the performance of the kernels, observe following metrics:
    - Mean and standard deviation of control flow divergence (`controlFlowDivergenceDist::mean` and `controlFlowDivergenceDist::stdev`)
-   - Avergage number of executed vector ALU instructions (`vALUInsts`)
+   - Average number of executed vector ALU instructions (`vALUInsts`)
    - Global memory accesses (`globalReads` and `globalWrites`)
    - Coalesced global memory accesses (`coalsrLineAddresses::total`)
 

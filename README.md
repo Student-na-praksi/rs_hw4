@@ -44,7 +44,7 @@ To build and simulate the kernels, use the provided Makefile in conjunction with
 ### Experiment Setup:
 
 1. Set the number of compute units to 2, 4, and 8.
-2. Run the both of the histogram kernels for each configuration.
+2. Run the both of the kernels for each configuration.
 3. To compare the performance of the kernels, observe following metrics:
    - Mean load latency (`loadLatencyDist::mean`)
    - Avergage number of executed vector ALU instructions (`vALUInsts`)
@@ -86,7 +86,7 @@ To build and simulate the kernels, use the provided Makefile in conjunction with
 ### Experiment Setup:
 
 1. Set the number of compute units to 2, 4, and 8.
-2. Run the both of the histogram kernels for each configuration.
+2. Run the both of the kernels for each configuration.
 3. To compare the performance of the kernels, observe following metrics:
    - Mean and standard deviation of control flow divergence (`controlFlowDivergenceDist::mean` and `controlFlowDivergenceDist::stdev`)
    - Average number of executed vector ALU instructions (`vALUInsts`)

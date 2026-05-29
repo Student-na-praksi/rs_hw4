@@ -7,6 +7,8 @@
 #define NUM_BINS 256
 #define BLOCK_SIZE 1024
 
+#include "lena_gray_bmp.h"
+
 
 __global__ void histogram_optimized(const unsigned char *image, int *hist, int size) {
     __shared__ int local_hist[NUM_BINS];
@@ -28,11 +30,15 @@ __global__ void histogram_optimized(const unsigned char *image, int *hist, int s
     }
 }
 
-int main(int argc, char **argv) {
+int main() {
 
     int width, height, channels;
-    unsigned char *h_img = stbi_load("./histogram/lena_gray.bmp", &width, &height, &channels, 1); // Force grayscale
+    unsigned char *h_img = stbi_load_from_memory(lena_gray_bmp, (int)lena_gray_bmp_len, &width, &height, &channels, 1); // Force grayscale
     
+    if (!h_img) {
+        printf("Failed to load embedded image\n");
+        return 1;
+    }
 
     int img_size = width * height;
     printf("Loaded image %dx%d\n", width, height);

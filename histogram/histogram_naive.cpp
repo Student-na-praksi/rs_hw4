@@ -7,6 +7,8 @@
 #define NUM_BINS 256
 #define BLOCK_SIZE 1024
 
+#include "lena_gray_bmp.h"
+
 __global__ void histogram_naive(const unsigned char *image, int *hist, int size) {
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
     if (idx < size) {
@@ -15,14 +17,14 @@ __global__ void histogram_naive(const unsigned char *image, int *hist, int size)
 }
 
 
-int main(int argc, char **argv) {
+int main() {
  
 
     int width, height, channels;
-    unsigned char *h_img = stbi_load("./histogram/lena_gray.bmp", &width, &height, &channels, 1); // Force grayscale
+    unsigned char *h_img = stbi_load_from_memory(lena_gray_bmp, (int)lena_gray_bmp_len, &width, &height, &channels, 1); // Force grayscale
 
     if (!h_img) {
-        printf("Failed to load image: %s\n", argv[1]);
+        printf("Failed to load embedded image\n");
         return 1;
     }
 
